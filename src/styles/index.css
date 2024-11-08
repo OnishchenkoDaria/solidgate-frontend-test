@@ -1,0 +1,138 @@
+/* setting all default margin/padding to 0 */
+body{
+    padding: 0;
+    margin: 0;
+}
+
+footer{
+    text-align: center;
+    padding-bottom: 24px;
+}
+
+/*
+    contains our 2 main elements(forms)
+    flex wrap provides adaptivity
+ */
+.wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: start;
+    border: 2px solid gray;
+}
+
+/* general class for main 2 containers */
+.container{
+    max-width: 420px;
+    min-width: 328px;
+    width: 100%;
+    max-height: 540px;
+    margin: 16px;
+    border: 2px solid lightgray;
+}
+
+.checkout-bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between ;
+}
+
+.checkout-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    height: 104px;
+}
+
+/* lower header in checkout bar */
+#lower-checkout-text p {
+    margin: 0px;
+}
+
+/* pay-card-title & span - title within line*/
+.pay-card-title{
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+}
+
+.pay-card-title span{
+    background:#fff;
+    padding:0 10px;
+}
+
+/* general and sub payment button classes*/
+.button{
+    width: 100%;
+}
+
+.apple-pay-btn{
+    margin-bottom: 24px;
+    margin-top: 24px;
+}
+
+.trial-pay-btn{
+    margin-bottom: 16px;
+    margin-top: 8px;
+}
+
+/* basic layout styling for the form using grid */
+.form-input-line input{
+    width: 100%;
+}
+
+.pay-form-content{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.card-number{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.card-exp-date{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.card-cvc{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+/* description beneath the trial button */
+.annotation{
+    padding: 12px 16px 12px 16px;
+}
+
+/* layout styling for second main container of text blocks with margins */
+.order-info{
+    padding: 4px 16px 8px 16px;
+}
+
+.order-info div{
+    margin-top: 8px;
+    margin-bottom: 8px ;
+}
+
+.description{
+    margin-top: 0px;
+}
+
+.header{
+    margin-bottom: 0px;
+}
+
+.price-block{
+    text-align: right;
+}

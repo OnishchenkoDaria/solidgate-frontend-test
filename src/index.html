@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Payment form</title>
+    <meta charset="UTF-8"/>
+
+    <!-- check the content below-->
+    <meta http-equiv="Content-Security-Policy" content="POST"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="stylesheet" href="styles/index.css"/>
+    <script src="./scripts/index.js"></script>
+</head>
+
+<body>
+    <!-- screen -->
+    <div class="wrapper">
+
+        <!-- there are two main containers within screen of payment form-->
+        <!-- 1st -- Checkout container-->
+        <div class="container">
+
+            <div class="checkout-box">
+
+                <!-- top checkout nav bar -->
+                <div class="checkout-bar">
+
+                    <div class="checkout-arrow">
+                        <-
+                    </div>
+
+                    <!-- purchase info -->
+                    <div class="checkout-title">
+                        <!-- separating text horizontally in 2 blocks -->
+                        <div id="upper-checkout-text">Checkout</div>
+                        <div id="lower-checkout-text">
+                            <p>5 days free</p>
+                            <p>then 299.99 UAH per 14 days</p>
+                        </div>
+                    </div>
+
+                    <div class="checkout-lang">
+                        УКР
+                    </div>
+
+                </div>
+
+                <!-- Apple Pay button is an individual element within checkout container -->
+                <input type="button" class="button apple-pay-btn" id="Apple" value="Pay">
+
+                <div class="card">
+                    <form>
+                        <div>
+                            <!-- sub header with line separation -->
+                            <div class="pay-card-title">
+                                <span>or pay with card</span>
+                            </div>
+
+                            <div class="pay-form-content">
+                                <!-- form input strings -->
+                                <div class="form-input-line card-number">
+                                    <label for="card-number">Card number</label>
+                                    <input type="number" id="card-number" placeholder="1234 1234 1234 1234" maxlength="16" required>
+                                </div>
+                                <div class="form-input-line card-exp-date">
+                                    <label for="card-exp-date">Expiry month</label>
+                                    <input type="date" id="card-exp-date" placeholder="mm/yy" maxlength="2" required>
+                                </div>
+                                <div class="form-input-line card-cvc">
+                                    <label for="card-cvc">CVC</label>
+                                    <input type="password" id="card-cvc" placeholder="***" maxlength="3" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Trial button & annotation -->
+                        <div>
+                            <input type="submit" class="button trial-pay-btn" value="Start Trial">
+                            <div class="annotation">
+                                You'll have your Plan Pro during 1 year. After this period of time, your plan will be automatically renewed with its original price without any discounts applied.
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2nd -- Purchase info container -->
+        <div class="container">
+
+            <!-- all divs within have proportional marign -->
+            <div class="order-info">
+                <div>Order info <= 100 char.</div>
+                <div>Description <= 400 char.</div>
+
+                <div class="pay-card-title"></div>
+
+                <!-- grouping text blocks: header + description -->
+                <!-- have margin styling specifics -->
+                <div class="text-block">
+                    <p class="header">Lamel Professional Smart Skin Compact Powder</p>
+                    <p class="description">Пудра для лица</p>
+                </div>
+
+                <div class="pay-card-title"></div>
+
+                <div class="price-block">
+                    <p class="header">5 days free</p>
+                    <p class="description">then 299.99 UAH per 14 days</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- fixed credentials footer -->
+    <footer>Powered by <b>Solid</b></footer>
+</body>
+
+</html>
