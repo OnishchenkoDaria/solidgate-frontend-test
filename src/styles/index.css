@@ -2,11 +2,22 @@
 body{
     padding: 0;
     margin: 0;
+    font-family: Inter;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    font-weight: 500;
+    font-size: 14px;
 }
 
 footer{
     text-align: center;
     padding-bottom: 24px;
+    line-height: 20px;
+    color: #666C7B;
+}
+
+footer span{
+    font-weight: 700;
 }
 
 /*
@@ -18,7 +29,7 @@ footer{
     flex-wrap: wrap;
     justify-content: center;
     align-items: start;
-    border: 2px solid gray;
+    /*border: 2px solid gray;*/
 }
 
 /* general class for main 2 containers */
@@ -28,13 +39,32 @@ footer{
     width: 100%;
     max-height: 540px;
     margin: 16px;
-    border: 2px solid lightgray;
+    /*border: 2px solid lightgray;*/
 }
 
 .checkout-bar{
     display: flex;
     flex-direction: row;
-    justify-content: space-between ;
+    justify-content: space-between;
+    color: #363A43;
+}
+
+.checkout-arrow{
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.checkout-lang{
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.checkout-lang > span{
+    font-size: 14px;
 }
 
 .checkout-title{
@@ -42,26 +72,51 @@ footer{
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
+    line-height: 32px;
     height: 104px;
 }
 
+#upper-checkout-text{
+    margin-top: 4px;
+    font-weight: 600;
+    line-height: 32px;
+    font-size: 18px;
+}
+
 /* lower header in checkout bar */
-#lower-checkout-text p {
+#lower-checkout-text > p{
+    line-height: 20px;
     margin: 0px;
 }
 
+#lower-checkout-text > h2 {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 600;
+    margin: 0;
+}
+
 /* pay-card-title & span - title within line*/
-.pay-card-title{
+.line{
     width: 100%;
     text-align: center;
-    border-bottom: 1px solid #000;
-    line-height: 0.1em;
+    line-height: 1px;
     margin: 10px 0 20px;
+}
+
+.pay-card-title {
+    border-bottom: 1px solid #E4E6EC;
+}
+
+.order-info-divider{
+    border-bottom: 1px solid #E0E2EA;
 }
 
 .pay-card-title span{
     background:#fff;
     padding:0 10px;
+    color: #666C7B;
+    font-weight: 400;
 }
 
 /* general and sub payment button classes*/
@@ -72,21 +127,80 @@ footer{
 .apple-pay-btn{
     margin-bottom: 24px;
     margin-top: 24px;
+    height: 48px;
+    background-color: #000000;
+    border-radius: 3px;
+    padding: 0;
+}
+
+.apple-pay-btn .icon{
+    margin: 14px 0 14px 0;
 }
 
 .trial-pay-btn{
     margin-bottom: 16px;
     margin-top: 8px;
+    height: 48px;
+    background-color: #028837;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    border: none;
 }
 
 /* basic layout styling for the form using grid */
+.form-input-line label{
+    display: block;
+    font-size: 12px;
+    line-height: 16px;
+    color: #666C7B;
+    margin-bottom: 4px;
+}
+
 .form-input-line input{
+    display: block;
+    max-height: 44px;
     width: 100%;
+    padding: 10px 12px 10px 12px;
+    box-sizing: border-box;
+
+    border: 1px solid #C7C9D1;
+    border-radius: 6px;
+    color: #666C7B;
+    letter-spacing: 0.5px;
+
+    line-height: 24px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.form-input-line .icon{
+    font-size: 18px;
+    color: #B0B4BE;
+
+    /* to make it inside input field*/
+    position: absolute;
+    padding-top: 13px;
+    padding-left: 13px;
+}
+
+#card-cvc{
+    letter-spacing: 3px;
+    font-weight: 600;
+}
+
+/* disable arrow:*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .pay-form-content{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
 }
 
 .card-number{
@@ -113,20 +227,58 @@ footer{
 /* description beneath the trial button */
 .annotation{
     padding: 12px 16px 12px 16px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #666C7B;
+    border: 1px solid #E4E6EC;
+    border-radius: 8px;
+}
+
+.annotation > span{
+    font-weight: 600;
 }
 
 /* layout styling for second main container of text blocks with margins */
 .order-info{
     padding: 4px 16px 8px 16px;
+    border-radius: 8px;
+    background-color: #F7F7F9;
+    color: #363A43;
 }
 
-.order-info div{
+.order-info > div{
     margin-top: 8px;
-    margin-bottom: 8px ;
+    margin-bottom: 16px ;
+}
+
+.order-header{
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.order-sub-header{
+    font-size: 14px;
+    line-height: 24px;
 }
 
 .description{
-    margin-top: 0px;
+    margin-top: 2px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #797E8B;
+}
+
+.order-total{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.order-total > span{
+    font-weight: 500;
 }
 
 .header{

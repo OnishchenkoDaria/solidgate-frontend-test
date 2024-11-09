@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Payment form</title>
     <meta charset="UTF-8"/>
 
     <!-- check the content below-->
-    <meta http-equiv="Content-Security-Policy" content="POST"/>
+    <!--Unrecognized Content-Security-Policy directive 'POST'.-->
+    <meta http-equiv="Content-Security-Policy"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <link rel="stylesheet" href="styles/index.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <script src="./scripts/index.js"></script>
 </head>
 
@@ -26,7 +30,7 @@
                 <div class="checkout-bar">
 
                     <div class="checkout-arrow">
-                        <-
+                        <object type="image/svg+xml" data="./icons/Back.svg" class="icon"></object>
                     </div>
 
                     <!-- purchase info -->
@@ -34,25 +38,27 @@
                         <!-- separating text horizontally in 2 blocks -->
                         <div id="upper-checkout-text">Checkout</div>
                         <div id="lower-checkout-text">
-                            <p>5 days free</p>
+                            <h2>5 days free</h2>
                             <p>then 299.99 UAH per 14 days</p>
                         </div>
                     </div>
 
                     <div class="checkout-lang">
-                        УКР
+                        <span>Укр</span>
                     </div>
 
                 </div>
 
                 <!-- Apple Pay button is an individual element within checkout container -->
-                <input type="button" class="button apple-pay-btn" id="Apple" value="Pay">
+                <button class="button apple-pay-btn" id="Apple">
+                    <object type="image/svg+xml" data="./icons/Apple_Pay_logo.svg" class="icon"></object>
+                </button>
 
                 <div class="card">
                     <form>
                         <div>
                             <!-- sub header with line separation -->
-                            <div class="pay-card-title">
+                            <div class="line pay-card-title">
                                 <span>or pay with card</span>
                             </div>
 
@@ -63,12 +69,14 @@
                                     <input type="number" id="card-number" placeholder="1234 1234 1234 1234" maxlength="16" required>
                                 </div>
                                 <div class="form-input-line card-exp-date">
-                                    <label for="card-exp-date">Expiry month</label>
-                                    <input type="date" id="card-exp-date" placeholder="mm/yy" maxlength="2" required>
+                                    <label for="card-exp-date">Expiration month</label>
+                                    <input type="text" id="card-exp-date" placeholder="MM/YY" maxlength="4" required>
                                 </div>
                                 <div class="form-input-line card-cvc">
                                     <label for="card-cvc">CVC</label>
-                                    <input type="password" id="card-cvc" placeholder="***" maxlength="3" required>
+                                    <!--<object type="image/svg+xml" data="./icons/Info.svg" class="icon"></object>-->
+                                    <!--or type=password-->
+                                    <input type="number" id="card-cvc" placeholder="•••" maxlength="3" required>
                                 </div>
                             </div>
                         </div>
@@ -77,7 +85,9 @@
                         <div>
                             <input type="submit" class="button trial-pay-btn" value="Start Trial">
                             <div class="annotation">
-                                You'll have your Plan Pro during 1 year. After this period of time, your plan will be automatically renewed with its original price without any discounts applied.
+                                You'll have your <span>Plan Pro during 1 year.</span> After this period of time,
+                                your plan will be <span>automatically renewed</span> with its original price without
+                                any discounts applied.
                             </div>
                         </div>
 
@@ -91,10 +101,10 @@
 
             <!-- all divs within have proportional marign -->
             <div class="order-info">
-                <div>Order info <= 100 char.</div>
-                <div>Description <= 400 char.</div>
+                <div class="order-header">Order info <= 100 char.</div>
+                <div class="order-sub-header">Description <= 400 char.</div>
 
-                <div class="pay-card-title"></div>
+                <div class="line order-info-divider"></div>
 
                 <!-- grouping text blocks: header + description -->
                 <!-- have margin styling specifics -->
@@ -103,18 +113,17 @@
                     <p class="description">Пудра для лица</p>
                 </div>
 
-                <div class="pay-card-title"></div>
+                <div class="line order-info-divider"></div>
 
                 <div class="price-block">
-                    <p class="header">5 days free</p>
-                    <p class="description">then 299.99 UAH per 14 days</p>
+                    <p class="order-total">299.99 UAH / <span>month</span></p>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- fixed credentials footer -->
-    <footer>Powered by <b>Solid</b></footer>
+    <footer>Powered by <span>Solid</span></footer>
 </body>
 
 </html>
