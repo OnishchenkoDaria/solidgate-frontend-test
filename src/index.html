@@ -9,11 +9,16 @@
     <meta http-equiv="Content-Security-Policy"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+    <!-- optimize imports-->
     <link rel="stylesheet" href="styles/index.css"/>
+    <link rel="stylesheet" href="styles/checkout-block.css"/>
+    <link rel="stylesheet" href="styles/form.css"/>
+    <link rel="stylesheet" href="styles/buttons.css"/>
+    <link rel="stylesheet" href="styles/order-info.css"/>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <script src="./scripts/index.js"></script>
 </head>
 
 <body>
@@ -44,7 +49,9 @@
                     </div>
 
                     <div class="checkout-lang">
-                        <span>Укр</span>
+                        <div class="checkout-arrow">
+                            <object type="image/svg+xml" data="./icons/UA-lang.svg" class="icon"></object>
+                        </div>
                     </div>
 
                 </div>
@@ -55,7 +62,7 @@
                 </button>
 
                 <div class="card">
-                    <form>
+                    <form action="/payment" method="post" id="payment-form" novalidate>
                         <div>
                             <!-- sub header with line separation -->
                             <div class="line pay-card-title">
@@ -66,17 +73,49 @@
                                 <!-- form input strings -->
                                 <div class="form-input-line card-number">
                                     <label for="card-number">Card number</label>
-                                    <input type="number" id="card-number" placeholder="1234 1234 1234 1234" maxlength="16" required>
+                                    <!-- visa or mastercard regex validation-->
+                                    <input
+                                            type="tel"
+                                            inputmode="numeric"
+                                            pattern="^(4\d{3} ?\d{4} ?\d{4} ?\d{1}(?:[0-9]{3})?$|^5[1-5]\d{2} ?\d{4} ?\d{4} ?\d{4})$"
+                                            spellcheck="false"
+                                            id="card-number"
+                                            placeholder="1234 1234 1234 1234"
+                                            maxlength="19"
+                                            minlength="13"
+                                            autocomplete="cc-number"
+                                            required>
+                                    <span class="error"></span>
                                 </div>
                                 <div class="form-input-line card-exp-date">
                                     <label for="card-exp-date">Expiration month</label>
-                                    <input type="text" id="card-exp-date" placeholder="MM/YY" maxlength="4" required>
+                                    <input
+                                            type="tel"
+                                            inputmode="numeric"
+                                            spellcheck="false"
+                                            id="card-exp-date"
+                                            placeholder="MM/YY"
+                                            maxlength="7"
+                                            minlength="5"
+                                            required>
+                                    <span class="error"></span>
                                 </div>
                                 <div class="form-input-line card-cvc">
                                     <label for="card-cvc">CVC</label>
-                                    <!--<object type="image/svg+xml" data="./icons/Info.svg" class="icon"></object>-->
                                     <!--or type=password-->
-                                    <input type="number" id="card-cvc" placeholder="•••" maxlength="3" required>
+                                    <div class="icon">
+                                        <object type="image/svg+xml" data="./icons/Info.svg"></object>
+                                    </div>
+                                    <input
+                                            type="text"
+                                            inputmode="numeric"
+                                            spellcheck="false"
+                                            id="card-cvc"
+                                            placeholder="•••"
+                                            maxlength="3"
+                                            minlength="3"
+                                            required>
+                                    <span class="error"></span>
                                 </div>
                             </div>
                         </div>
@@ -92,6 +131,15 @@
                         </div>
 
                     </form>
+
+                    <div class="modal-background" id="modal-background"></div>
+                    <div class="modal" id="success-modal">
+                        <div>
+                            Payment Successful!
+                            <button id="close-modal">Close</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -123,7 +171,15 @@
     </div>
 
     <!-- fixed credentials footer -->
-    <footer>Powered by <span>Solid</span></footer>
+    <footer>
+        <div class="footer-content">
+            <p>Powered by </p>
+            <object type="image/svg+xml" data="./icons/Solid.svg"></object>
+        </div>
+
+    </footer>
 </body>
+
+<script src="./scripts/index.js" type="text/javascript"></script>
 
 </html>

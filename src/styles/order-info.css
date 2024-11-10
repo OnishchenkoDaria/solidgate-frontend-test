@@ -1,0 +1,45 @@
+/* layout styling for second main container of text blocks with margins */
+.order-info{
+    padding: 4px 16px 8px 16px;
+    border-radius: 8px;
+    background-color: #F7F7F9;
+    color: #363A43;
+}
+
+.order-info > div{
+    margin-top: 8px;
+    margin-bottom: 16px ;
+}
+
+.order-header{
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.order-sub-header{
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.description{
+    margin-top: 2px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #797E8B;
+}
+
+.order-total{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.order-total > span{
+    font-weight: 500;
+}
+
+.price-block{
+    text-align: right;
+}

@@ -1,0 +1,53 @@
+.checkout-bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #363A43;
+}
+
+.checkout-arrow{
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.checkout-lang{
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.checkout-lang > span{
+    font-size: 14px;
+}
+
+.checkout-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    line-height: 32px;
+    height: 104px;
+}
+
+#upper-checkout-text{
+    margin-top: 4px;
+    font-weight: 600;
+    line-height: 32px;
+    font-size: 18px;
+}
+
+/* lower header in checkout bar */
+#lower-checkout-text > p{
+    line-height: 20px;
+    margin: 0px;
+}
+
+#lower-checkout-text > h2 {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 600;
+    margin: 0;
+}
