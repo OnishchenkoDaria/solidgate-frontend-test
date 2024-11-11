@@ -9,22 +9,30 @@
     font-size: 14px;
 }
 
-/* import each page's blocks css styling files */
-
-/* Checkout header and navigation */
-/*@import "checkout-block.css";*/
-/* form for card info input */
-/*@import "form.css";*/
-/* trial and apple payment buttons designs */
-/*@import "buttons.css";*/
-/* grayish block with order details info */
-/*@import "order-info.css";*/
+body, html{
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
 
 footer{
     text-align: center;
     padding-bottom: 24px;
     line-height: 20px;
     color: #666C7B;
+}
+
+/* only apply absolute positioning if content is shorter than viewport */
+@media (min-height: 100vh) {
+    main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    footer {
+        margin-top: auto;
+    }
 }
 
 .footer-content{
@@ -34,12 +42,19 @@ footer{
     justify-content: center;
 }
 
+.content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
 /*
     contains our 2 main elements(forms)
     flex wrap provides adaptivity
  */
 .wrapper{
     display: flex;
+    flex: 1;
     flex-wrap: wrap;
     justify-content: center;
     align-items: start;
@@ -54,4 +69,45 @@ footer{
     max-height: 540px;
     margin: 16px;
     /*border: 2px solid lightgray;*/
+}
+
+/* @media for checkout bar transition */
+@media screen and (max-width: 900px) {
+    #checkout-lang-big-scr{
+        display: none;
+    }
+
+    #checkout-bar-big-scr{
+        display: none;
+    }
+
+    #lower-checkout-text-big-scr{
+        display: none;
+    }
+}
+
+/* @media for checkout bar transition */
+@media screen and (min-width: 900px){
+    #checkout-bar{
+        display: none;
+    }
+
+    #checkout-bar-big-scr{
+        margin-top: 56px;
+    }
+
+    #checkout-header-big-scr{
+        display: flex;
+        margin-bottom: 16px;
+
+        position: relative;
+        right: 38px;
+    }
+
+    #checkout-lang-big-scr{
+        width: 100%;
+        display: flex;
+        justify-content: right;
+        margin-bottom: 8px;
+    }
 }

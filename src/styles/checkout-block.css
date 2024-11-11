@@ -3,6 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
     color: #363A43;
+    margin: 12px 12px 0 12px;
 }
 
 .checkout-arrow{
@@ -32,7 +33,7 @@
     height: 104px;
 }
 
-#upper-checkout-text{
+.upper-checkout-text{
     margin-top: 4px;
     font-weight: 600;
     line-height: 32px;
@@ -40,12 +41,12 @@
 }
 
 /* lower header in checkout bar */
-#lower-checkout-text > p{
+.lower-checkout-text > p{
     line-height: 20px;
     margin: 0px;
 }
 
-#lower-checkout-text > h2 {
+.lower-checkout-text > h2 {
     font-size: 24px;
     line-height: 32px;
     font-weight: 600;

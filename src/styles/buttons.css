@@ -1,6 +1,7 @@
 /* general and sub payment button classes*/
 .button{
     width: 100%;
+    border: none;
 }
 
 .apple-pay-btn{
@@ -10,11 +11,91 @@
     background-color: #000000;
     border-radius: 3px;
     padding: 0;
+
 }
 
 .apple-pay-btn .icon{
     margin: 14px 0 14px 0;
 }
+
+/* styling for case-based button display toggle */
+.btn-variations{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+#Apple{
+    display: block;
+}
+
+#Google{
+    display: block;
+}
+
+#PayPal{
+    display: block;
+    background: #F6C557;
+}
+
+.trial-btn-cmpx-title{
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    justify-content: center;
+}
+
+/* appearance and disappearance animations */
+.button .title {
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.processing-group {
+    opacity: 0;
+    transform: translateY(100%);
+}
+
+.processing .default-title.disappearing {
+    animation: disappear 0.3s ease-out forwards;
+}
+
+.processing .processing-group {
+    animation: appear 0.3s ease-out forwards;
+}
+
+/* reverse animations */
+.default-title.appearing {
+    animation: appear 0.3s ease-out forwards;
+}
+
+.processing-group.disappearing {
+    animation: disappear 0.3s ease-out forwards;
+}
+
+/* Animation Keyframes */
+@keyframes disappear {
+    to {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* form button styling */
 
 .trial-pay-btn{
     margin-bottom: 16px;
@@ -26,4 +107,15 @@
     font-weight: 600;
     border-radius: 6px;
     border: none;
+}
+
+.trial-pay-btn:hover{
+    background: #029C3F;
+    transform: translateY(-2px);
+
+}
+
+.trial-pay-btn:active{
+    background: #02742F;
+    transform: translateY(6px);
 }

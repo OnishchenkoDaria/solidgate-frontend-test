@@ -22,153 +22,196 @@
 </head>
 
 <body>
-    <!-- screen -->
-    <div class="wrapper">
+    <main class="content-wraper">
+        <!-- top checkout nav bar -->
+        <div class="checkout-bar" id="checkout-bar">
 
-        <!-- there are two main containers within screen of payment form-->
-        <!-- 1st -- Checkout container-->
-        <div class="container">
+            <div class="checkout-arrow" id="checkout-arrow">
+                <object type="image/svg+xml" data="./icons/Back.svg" class="icon"></object>
+            </div>
 
-            <div class="checkout-box">
+            <!-- purchase info -->
+            <div class="checkout-title">
+                <!-- separating text horizontally in 2 blocks -->
+                <div class="upper-checkout-text" id="upper-checkout-text">Checkout</div>
+                <div id="lower-checkout-text" class="lower-checkout-text">
+                    <h2>5 days free</h2>
+                    <p>then 299.99 UAH per 14 days</p>
+                </div>
+            </div>
 
-                <!-- top checkout nav bar -->
-                <div class="checkout-bar">
+            <div class="checkout-lang" id="checkout-lang">
+                <div class="checkout-arrow">
+                    <object type="image/svg+xml" data="./icons/UA-lang.svg" class="icon"></object>
+                </div>
+            </div>
 
-                    <div class="checkout-arrow">
-                        <object type="image/svg+xml" data="./icons/Back.svg" class="icon"></object>
-                    </div>
+        </div>
 
-                    <!-- purchase info -->
-                    <div class="checkout-title">
-                        <!-- separating text horizontally in 2 blocks -->
-                        <div id="upper-checkout-text">Checkout</div>
-                        <div id="lower-checkout-text">
-                            <h2>5 days free</h2>
-                            <p>then 299.99 UAH per 14 days</p>
+
+        <!-- screen -->
+        <div class="wrapper">
+
+            <!-- there are two main containers within screen of payment form-->
+            <!-- 1st -- Checkout container-->
+            <div class="container">
+
+                <!-- for 1000px+ screen-->
+                <div id="checkout-bar-big-scr">
+                    <div id="checkout-header-big-scr">
+                        <div class="checkout-arrow" id="checkout-arrow-big-scr">
+                            <object type="image/svg+xml" data="./icons/Back.svg" class="icon"></object>
                         </div>
+                        <div id="upper-checkout-text-big-scr" class="upper-checkout-text">Checkout</div>
                     </div>
-
-                    <div class="checkout-lang">
-                        <div class="checkout-arrow">
-                            <object type="image/svg+xml" data="./icons/UA-lang.svg" class="icon"></object>
-                        </div>
-                    </div>
-
                 </div>
 
-                <!-- Apple Pay button is an individual element within checkout container -->
-                <button class="button apple-pay-btn" id="Apple">
-                    <object type="image/svg+xml" data="./icons/Apple_Pay_logo.svg" class="icon"></object>
-                </button>
+                <div class="lower-checkout-text" id="lower-checkout-text-big-scr">
+                    <h2>5 days free</h2>
+                    <p>then 299.99 UAH per 14 days</p>
+                </div>
 
-                <div class="card">
-                    <form action="/payment" method="post" id="payment-form" novalidate>
-                        <div>
-                            <!-- sub header with line separation -->
-                            <div class="line pay-card-title">
-                                <span>or pay with card</span>
-                            </div>
+                <div class="checkout-box">
 
-                            <div class="pay-form-content">
-                                <!-- form input strings -->
-                                <div class="form-input-line card-number">
-                                    <label for="card-number">Card number</label>
-                                    <!-- visa or mastercard regex validation-->
-                                    <input
-                                            type="tel"
-                                            inputmode="numeric"
-                                            pattern="^(4\d{3} ?\d{4} ?\d{4} ?\d{1}(?:[0-9]{3})?$|^5[1-5]\d{2} ?\d{4} ?\d{4} ?\d{4})$"
-                                            spellcheck="false"
-                                            id="card-number"
-                                            placeholder="1234 1234 1234 1234"
-                                            maxlength="19"
-                                            minlength="13"
-                                            autocomplete="cc-number"
-                                            required>
-                                    <span class="error"></span>
+                    <!-- Apple Pay, PayPal & Google buttons is an individual element within checkout container -->
+                    <!-- This section has 5 toggles for buttons display -->
+                    <div class="btn-variations">
+                        <button class="button apple-pay-btn hidden" id="Google" onclick="handleButtonClick()">
+                            <object type="image/svg+xml" data="./icons/Gpay_logo.svg" class="icon" ></object>
+                        </button>
+                        <button class="button apple-pay-btn" id="Apple" onclick="handleButtonClick()">
+                            <object type="image/svg+xml" data="./icons/Apple_Pay_logo.svg" class="icon"></object>
+                        </button>
+                        <button class="button apple-pay-btn hidden" id="PayPal" onclick="handleButtonClick()">
+                            <object type="image/svg+xml" data="./icons/Paypal.svg" class="icon"></object>
+                        </button>
+                    </div>
+
+                    <div class="card">
+                        <form action="/payment" method="post" id="payment-form" novalidate>
+                            <div>
+                                <!-- sub header with line separation -->
+                                <div class="line pay-card-title">
+                                    <span>or pay with card</span>
                                 </div>
-                                <div class="form-input-line card-exp-date">
-                                    <label for="card-exp-date">Expiration month</label>
-                                    <input
-                                            type="tel"
-                                            inputmode="numeric"
-                                            spellcheck="false"
-                                            id="card-exp-date"
-                                            placeholder="MM/YY"
-                                            maxlength="7"
-                                            minlength="5"
-                                            required>
-                                    <span class="error"></span>
-                                </div>
-                                <div class="form-input-line card-cvc">
-                                    <label for="card-cvc">CVC</label>
-                                    <!--or type=password-->
-                                    <div class="icon">
-                                        <object type="image/svg+xml" data="./icons/Info.svg"></object>
+
+                                <div class="pay-form-content">
+                                    <!-- form input strings -->
+                                    <div class="form-input-line card-number">
+                                        <label for="card-number">Card number</label>
+                                        <!-- visa or mastercard regex validation-->
+                                        <input
+                                                type="tel"
+                                                inputmode="numeric"
+                                                pattern="^(4\d{3} ?\d{4} ?\d{4} ?\d{1}(?:[0-9]{3})?$|^5[1-5]\d{2} ?\d{4} ?\d{4} ?\d{4})$"
+                                                spellcheck="false"
+                                                id="card-number"
+                                                placeholder="1234 1234 1234 1234"
+                                                maxlength="19"
+                                                minlength="13"
+                                                autocomplete="cc-number"
+                                                required>
+                                        <span class="error"></span>
                                     </div>
-                                    <input
-                                            type="text"
-                                            inputmode="numeric"
-                                            spellcheck="false"
-                                            id="card-cvc"
-                                            placeholder="•••"
-                                            maxlength="3"
-                                            minlength="3"
-                                            required>
-                                    <span class="error"></span>
+                                    <div class="form-input-line card-exp-date">
+                                        <label for="card-exp-date">Expiration month</label>
+                                        <input
+                                                type="tel"
+                                                inputmode="numeric"
+                                                spellcheck="false"
+                                                id="card-exp-date"
+                                                placeholder="MM/YY"
+                                                maxlength="5"
+                                                minlength="5"
+                                                required>
+                                        <span class="error"></span>
+                                    </div>
+                                    <div class="form-input-line card-cvc">
+                                        <label for="card-cvc">CVC</label>
+                                        <!--or type=password-->
+                                        <div class="icon">
+                                            <object type="image/svg+xml" class="info" data="./icons/Info.svg"></object>
+                                        </div>
+                                        <input
+                                                type="text"
+                                                inputmode="numeric"
+                                                spellcheck="false"
+                                                id="card-cvc"
+                                                placeholder="•••"
+                                                maxlength="3"
+                                                minlength="3"
+                                                required>
+                                        <span class="error"></span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Trial button & annotation -->
-                        <div>
-                            <input type="submit" class="button trial-pay-btn" value="Start Trial">
-                            <div class="annotation">
-                                You'll have your <span>Plan Pro during 1 year.</span> After this period of time,
-                                your plan will be <span>automatically renewed</span> with its original price without
-                                any discounts applied.
+                            <!-- Trial button & annotation -->
+                            <button type="submit" class="button trial-pay-btn" id="trial-form-pay-btn">
+                                <span class="trial-btn-cmpx-title" id="trial-btn-cmpx-title">
+                                    <span id="trial-btn-title-text" class="title ">Start Trial</span>
+                                    <span id="trial-btn-processing-group" class="title processing-group trial-btn-cmpx-title hidden">
+                                        <object id="trial-btn-title-icon" type="image/svg+xml" data="./icons/Loader.svg" class="icon"></object>
+                                        <span id="trial-btn-title-processing">Processing payment</span>
+                                    </span>
+                                </span>
+                            </button>
+                                <div class="annotation">
+                                    You'll have your <span>Plan Pro during 1 year.</span> After this period of time,
+                                    your plan will be <span>automatically renewed</span> with its original price without
+                                    any discounts applied.
+                                </div>
+
+                        </form>
+
+                        <div class="modal-background" id="modal-background"></div>
+                        <div class="modal" id="success-modal">
+                            <div>
+                                Payment Successful!
+                                <button id="close-modal">Close</button>
                             </div>
                         </div>
 
-                    </form>
+                    </div>
+                </div>
+            </div>
 
-                    <div class="modal-background" id="modal-background"></div>
-                    <div class="modal" id="success-modal">
-                        <div>
-                            Payment Successful!
-                            <button id="close-modal">Close</button>
-                        </div>
+            <!-- 2nd -- Purchase info container -->
+            <div class="container">
+
+                <!-- lang toggle for 100+px screen-->
+                <div class="checkout-lang" id="checkout-lang-big-scr">
+                    <div class="checkout-arrow">
+                        <object type="image/svg+xml" data="./icons/EN-lang.svg" class="icon"></object>
+                    </div>
+                    <div class="checkout-arrow">
+                        <object type="image/svg+xml" data="./icons/UA-lang.svg" class="icon"></object>
+                    </div>
+                </div>
+
+                <!-- all divs within have proportional marign -->
+                <div class="order-info">
+                    <div class="order-header">Order info <= 100 char.</div>
+                    <div class="order-sub-header">Description <= 400 char.</div>
+
+                    <div class="line order-info-divider"></div>
+
+                    <!-- grouping text blocks: header + description -->
+                    <!-- have margin styling specifics -->
+                    <div class="text-block">
+                        <p class="header">Lamel Professional Smart Skin Compact Powder</p>
+                        <p class="description">Пудра для лица</p>
                     </div>
 
+                    <div class="line order-info-divider"></div>
+
+                    <div class="price-block">
+                        <p class="order-total">299.99 UAH / <span>month</span></p>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- 2nd -- Purchase info container -->
-        <div class="container">
-
-            <!-- all divs within have proportional marign -->
-            <div class="order-info">
-                <div class="order-header">Order info <= 100 char.</div>
-                <div class="order-sub-header">Description <= 400 char.</div>
-
-                <div class="line order-info-divider"></div>
-
-                <!-- grouping text blocks: header + description -->
-                <!-- have margin styling specifics -->
-                <div class="text-block">
-                    <p class="header">Lamel Professional Smart Skin Compact Powder</p>
-                    <p class="description">Пудра для лица</p>
-                </div>
-
-                <div class="line order-info-divider"></div>
-
-                <div class="price-block">
-                    <p class="order-total">299.99 UAH / <span>month</span></p>
-                </div>
-            </div>
-        </div>
-    </div>
+    </main>
 
     <!-- fixed credentials footer -->
     <footer>
@@ -181,5 +224,6 @@
 </body>
 
 <script src="./scripts/index.js" type="text/javascript"></script>
+<script src="scripts/payBtnChange.js" type="text/javascript"></script>
 
 </html>

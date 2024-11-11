@@ -40,20 +40,40 @@
 
     border: 1px solid #C7C9D1;
     border-radius: 6px;
-    color: #666C7B;
+    box-shadow: 0px 2px 4px -2px #0000001F;
     letter-spacing: 0.5px;
 
+    color: #666C7B;
     line-height: 24px;
     font-size: 16px;
     font-weight: 400;
 }
 
+/* active (focused) input field*/
+.form-input-line input:focus{
+    outline: none;
+    border: 1px solid #6ABAF5;
+    box-shadow: 0 0 0 2px #0094FF52;
+}
+
+/* invalid data inserted*/
 .form-input-line .error{
     display: block;
     width: 100%;
     padding: 4px 0 0 0;
-    font-size: 80%;
-    color: darkred;
+    font-size: 12px;
+    line-height: 16px;
+    color: #CF3311;
+}
+
+.form-input-line .invalid{
+    border: 1px solid #EC3A13;
+    box-shadow: 0 2px 4px -2px #0000001F;
+}
+
+.form-input-line .invalid:focus{
+    border: 1px solid #EC3A13;
+    box-shadow: 0 2px 4px -2px #0000001F;
 }
 
 .form-input-line .error .active{
@@ -183,4 +203,13 @@
 }
 .modal-background.active {
     display: block;
+}
+
+/* info icon hover transition */
+.form-input-line .icon:hover .info {
+    filter: brightness(0.7);
+}
+
+.form-input-line .icon:hover + input {
+    background: radial-gradient(circle at top, rgba(207, 207, 207, 0.38) 0%, rgb(255, 255, 255) 100%);
 }

@@ -13,9 +13,14 @@ const modal = document.getElementById("success-modal");
 const modalBackground = document.getElementById("modal-background");
 const closeModalButton = document.getElementById("close-modal");
 
+const trialButtonTitle = document.getElementById("trial-btn-title-text");
+const trialProcessingGroup = document.getElementById("trial-btn-processing-group");
+const trialButton = document.getElementById("trial-form-pay-btn");
+
 //boolean flag for date check
 let isDateValid = false;
 
+/* MOCK SUCCESS MESSAGE */
 function showModal() {
     modal.classList.add("active");
     modalBackground.classList.add("active");
@@ -57,7 +62,7 @@ function formatCardExpDate(){
 
 function checkDate(cardMonth, cardYear){
     const currentMonth = new Date().getMonth() + 1;
-    const currentYear = new Date().getFullYear();
+    const currentYear = new Date().getFullYear() % 100;
 
     if(cardMonth < 1 || cardMonth > 12) {
         return false;
@@ -77,7 +82,7 @@ function  checkValidNumber(){
             "Check card number"
         );
     } else {
-        clearErrorMessage(numberErrorMessage);
+        clearErrorMessage(cardNumber, numberErrorMessage);
     }
 }
 
@@ -96,7 +101,7 @@ function checkValidDate(){
         );
         isDateValid = false;
     } else {
-        clearErrorMessage(dateErrorMessage);
+        clearErrorMessage(cardExpDate, dateErrorMessage);
         isDateValid = true;
     }
 }
@@ -111,7 +116,7 @@ function checkValidCVC(){
             "Check CVC"
         );
     } else {
-        clearErrorMessage(cvcErrorMessage);
+        clearErrorMessage(cardCVC, cvcErrorMessage);
     }
 }
 
@@ -119,9 +124,9 @@ function checkValidCVC(){
 cardNumber.addEventListener("input", formatCardNumber);
 cardExpDate.addEventListener("input", formatCardExpDate);
 
-cardNumber.addEventListener("input", checkValidNumber);
-cardExpDate.addEventListener("input", checkValidDate);
-cardCVC.addEventListener("input", checkValidCVC);
+cardNumber.addEventListener("blur", checkValidNumber);
+cardExpDate.addEventListener("blur", checkValidDate);
+cardCVC.addEventListener("blur", checkValidCVC);
 
 form.addEventListener("submit", (event) => {
     //validate each field
@@ -135,8 +140,28 @@ form.addEventListener("submit", (event) => {
         event.preventDefault();
     } else {
         event.preventDefault();
-        form.reset();
-        showModal();
+
+        //button animation transition and mock wait for "processing":
+
+        trialButton.classList.add("processing");
+        trialButtonTitle.classList.add("disappearing");
+
+        setTimeout(() => {
+            trialButtonTitle.classList.add("hidden");
+            trialProcessingGroup.classList.remove("hidden");
+        }, 120);
+
+        setTimeout(() => {
+            //form.reset();
+            trialButton.classList.remove("processing");
+            trialButtonTitle.classList.remove("disappearing", "hidden");
+            trialProcessingGroup.classList.add("hidden");
+
+            trialButtonTitle.classList.add("appearing");
+            trialProcessingGroup.classList.add("hidden");
+
+            showModal();
+        }, 3000);
     }
 });
 
@@ -154,9 +179,11 @@ function showErrorMessage(input, errorElement, missingMsg, formatMsg, lengthMsg)
         errorElement.textContent = "Input error occurred";
     }
     errorElement.classList.add("active");
+    input.classList.add("invalid");
 }
 
-function clearErrorMessage(errorElement){
+function clearErrorMessage(input, errorElement){
     errorElement.textContent = "";
-    errorElement.classList.remove("active");;
+    errorElement.classList.remove("active");
+    input.classList.remove("invalid");
 }
